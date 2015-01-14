@@ -56,7 +56,8 @@ public class TinySearchEngine implements TinySearchEngineBase
     public static void main(String[] args) throws Exception
     {
     TinySearchEngineBase searchEngine = new TinySearchEngine();
-    Driver.run(searchEngine);
+    MyDriver d = new MyDriver();
+    d.run(searchEngine);
     }
     
     @Override
