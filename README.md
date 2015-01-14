@@ -9,7 +9,7 @@ The program is written in Java and represents a SearchEngine which at startup wi
 The search-queries is handled by a parsetree that supports complex queries in infix-notation.
 Supported operations are: Union (|), Intersection (+) and Difference (-).
 
-The result will contain the documents that the contains the words specified in the query. The documents can be sorted by adding: "sortby popularity/relevance asc/desc"
+The result will contain the documents where the words occur. The documents can be sorted by adding: "sortby popularity/relevance asc/desc"
 
 ##Documentation
 The code is well documented but if you have any questions you can contact me on Kimham@kth.se
