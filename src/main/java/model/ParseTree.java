@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model;
+package id1020.proj2.ver3;
 import edu.princeton.cs.introcs.StdOut;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -197,7 +197,10 @@ public class ParseTree
             if(data == null)
             {
             data = se.simpleQuery(root.left.string);
+            if(data != null)
+            {
             se.updateCache(data,"SimpleQuery",root.left.string);
+            }
             }
             if(root.right != null)
         {
@@ -231,7 +234,6 @@ public class ParseTree
         }
         if(temp.right.type.equalsIgnoreCase("operator"))
         {
-            //String tempInfix = "(" + infix;
             infix = infix + " " + temp.string;
             temp = temp.right;
         }
@@ -254,7 +256,10 @@ public class ParseTree
             if(operand1 == null)
             {
             operand1 = se.simpleQuery(temp.left.string);
+            if(operand1 != null)
+            {
             se.updateCache(operand1, "simpleQuery", temp.left.string);
+            }
             }
         }
         if(temp.left.data != null)
@@ -268,7 +273,10 @@ public class ParseTree
             if(operand2 == null)
             {
             operand2 = se.simpleQuery(temp.right.string);
+            if(operand2 != null)
+            {
             se.updateCache(operand2, "simpleQuery", temp.right.string);
+            }
             }
         }
         if(temp.right.data != null)
@@ -284,7 +292,10 @@ public class ParseTree
             if(data == null)
             {
             data = se.union(operand1, operand2);
+            if(data != null)
+            {
             se.updateCache(data, operator, operand1, operand2);
+            }
             }
             temp.type="operand";
             temp.data = data;
@@ -297,7 +308,10 @@ public class ParseTree
             if(data == null)
             {
             data = se.intersection(operand1, operand2);
+            if(data != null)
+            {
             se.updateCache(data, operator, operand1, operand2);
+            }
             }
             temp.type="operand";
             temp.data = data;
@@ -310,7 +324,10 @@ public class ParseTree
             if(data == null)
             {
             data = se.difference(operand1, operand2);
+            if(data != null)
+            {
             se.updateCache(data, operator, operand1, operand2);
+            }
             }
             temp.type="operand";
             temp.data = data;

@@ -13,21 +13,14 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
-import javax.swing.text.BadLocationException;
+import javax.swing.border.Border;
 
 public class GUI extends JFrame {
-    /**
-     * The text area which is used for displaying logging information.
-     */
     private JTextArea textArea;
      
     private JButton buttonStart = new JButton("Execute");
-    //private JTextField txt = new JTextField("Enter query here", 200);
     private JTextArea txt;
     private PrintStream standardOut;
-    
     private String query;
      
     public GUI() {
@@ -35,11 +28,16 @@ public class GUI extends JFrame {
         
         txt = new JTextArea("------------Enter query here------------", 400, 60);  
         txt.setBounds(10,30,400,50);  
-        txt.setBackground(Color.black);  
+        txt.setBackground(Color.DARK_GRAY);  
         txt.setForeground(Color.white); 
         
+        buttonStart.setBackground(Color.yellow);
+        
+        this.getContentPane().setBackground(Color.black);
         textArea = new JTextArea(50, 10);
         textArea.setEditable(false);
+        textArea.setBackground(Color.DARK_GRAY);  
+        textArea.setForeground(Color.red);
         PrintStream printStream = new PrintStream(new CustomOutputStream(textArea));
          
         // keeps reference of standard output stream
@@ -60,6 +58,8 @@ public class GUI extends JFrame {
         add(buttonStart, constraints);
          
         constraints.gridx = 1;
+        constraints.gridwidth = 1;
+        constraints.fill = GridBagConstraints.BOTH;
         add(txt, constraints);
          
         constraints.gridx = 0;
@@ -71,7 +71,7 @@ public class GUI extends JFrame {
          
         add(new JScrollPane(textArea), constraints);
          
-        // adds event handler for button Start
+        // adds event handler for button Execute
         buttonStart.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
@@ -100,17 +100,5 @@ public class GUI extends JFrame {
     	query = null;
     	return q;
     }
-    /**
-     * Runs the program
-     */
-    /*
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new GUI().setVisible(true);
-            }
-        });
-    }
-    */
+ 
 }

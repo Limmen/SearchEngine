@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package model;
+package id1020.proj2.ver3;
 
 import edu.princeton.cs.introcs.StdOut;
 import java.util.ArrayList;
@@ -33,6 +33,7 @@ public class CacheObject
         this.data = data;
         this.operator = operator;
         this.operand1 = operand1;
+        
     }
     
     public CacheObject(ArrayList<ArrayList> data, String operator, ArrayList<ArrayList> operand3, ArrayList<ArrayList> operand4)
@@ -76,7 +77,31 @@ public class CacheObject
         if(this.operator.equalsIgnoreCase("|") || this.operator.equalsIgnoreCase("+"))
         {
             boolean equal = true;
-            
+            if(this.operand3 == null && this.operand4 == null && operand3 == null && operand4 == null)
+            {
+                return true;
+            }
+            if((this.operand3 == null || this.operand4 == null) && (operand3 != null && operand4 != null))
+            {
+                return false;
+            }
+            if(this.operand3 == null && operand3 == null)
+            {
+                return equals2(this.operand4, operand4);
+            }
+            if(this.operand4 == null && operand4 == null)
+            {
+                return equals2(this.operand3, operand3);
+            }
+            if(this.operand3 == null && operand4 == null)
+            {
+                return equals2(this.operand4, operand3);
+            }            
+            if(this.operand4 == null && operand3 == null)
+            {
+                return equals2(this.operand3, operand4);
+            }
+                
             boolean temp = (equalList2(this.operand3.get(0),(operand3.get(0))) 
                     && equalList2(this.operand4.get(0),(operand4.get(0))) 
                         || (equalList2(this.operand3.get(0),(operand4.get(0))) 
@@ -145,6 +170,68 @@ public class CacheObject
         return false;
     }
     
+    public boolean equals2(ArrayList<ArrayList> operand3, ArrayList<ArrayList> operand4)
+    {
+        if(this.operator.equalsIgnoreCase("|") || this.operator.equalsIgnoreCase("+"))
+        {
+        boolean equal = true;
+        boolean temp = (equalList2(operand3.get(0),(operand4.get(0))));
+                    
+            if(temp == false)
+            {
+                return temp;
+            }
+            
+            temp = (equalList3(operand3.get(1),(operand4.get(1))));
+            if(temp == false)
+            {
+                return temp;
+            }
+                    
+            for(int i = 2; i < operand3.size(); i++)
+            {
+                if((equalList(operand3.get(i),(operand4.get(i)))));
+                {
+                    equal = true;
+                }
+                if((equalList(operand3.get(i), operand4.get(i))) == false)
+                {
+                    return false;
+                }
+                
+            }
+            return equal;
+        }
+        if(this.operator.equalsIgnoreCase("-"))
+        {
+           boolean equal = true;
+            
+            boolean temp = (equalList2(operand3.get(0),(operand4.get(0)))); 
+            if(temp == false)
+            {
+                return temp;
+            }
+            temp = (equalList3(operand4.get(1),(operand3.get(1))));
+            if(temp == false)
+            {
+                return temp;
+            }
+                    
+            for(int i = 1; i < this.operand3.size(); i++)
+            {
+                if((equalList(operand4.get(i),(operand3.get(i)))));
+                {
+                    equal = true;
+                }
+              if((equalList(operand3.get(i), operand4.get(i))) == false)
+                {
+                    return false;
+                }
+            }
+            return equal;
+        }
+        return false;
+    }
     public boolean equalList(ArrayList<Integer> operand1, ArrayList<Integer> operand2)
     {
         if(operand1.size() != operand2.size() || (operand1 == null && operand2 != null) || (operand2 == null && operand1 != null))
