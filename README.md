@@ -14,6 +14,8 @@ The result will contain the documents where the words occur. The documents can b
 ##Documentation
 The code is well documented but if you have any questions you can contact me on Kimham@kth.se
 
+##How can i use this?
+in src/main/resources u can find a raw zip file that you can download, or check out my personal website where i will put a download link: limmen.github.io/Personal-website.
 ##Author
 Kim Hammar
 
