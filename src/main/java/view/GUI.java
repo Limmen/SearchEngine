@@ -37,7 +37,7 @@ public class GUI extends JFrame {
         textArea = new JTextArea(50, 10);
         textArea.setEditable(false);
         textArea.setBackground(Color.DARK_GRAY);  
-        textArea.setForeground(Color.red);
+        textArea.setForeground(Color.white);
         PrintStream printStream = new PrintStream(new CustomOutputStream(textArea));
          
         // keeps reference of standard output stream

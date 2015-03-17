@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package id1020.proj2.ver3;
+package model;
 import edu.princeton.cs.introcs.StdOut;
 import java.util.ArrayList;
 import java.util.Collections;
